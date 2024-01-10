@@ -1,0 +1,189 @@
+Custom OpenWrt firmware for x86_64.
+
+Changed configurations:
+    Target System: Atheros ATH79 --> x86
+    Subtarget: Generic --> x86_64
+    Target Images:
+        [*] Build LiveCD image (ISO)
+        [*] Build VirtualBox image files (VDI)
+        [*] Build VMware image files (VMDK)
+        [*] Build Hyper-V image files (VHDX)
+        Kernel partition size (in MiB): 16 --> 128
+        Root filesystem partition size (in MiB): 104 --> 832
+    Global build settings:
+        [*] Compile with full language support
+        [*] Remove ipkg/opkg status data files in final images
+    Base system:
+        busybox --> busybox-selinux
+        dnsmasq --> dnsmasq-full
+        dnsmasq-full:
+            [*] Build with IPset support.
+        dropbear:
+            Configuration:
+                [*] Elliptic curve cryptography (ECC):
+                    [*] Elliptic curve cryptography (ECC), full support
+                [*] Enable compression
+        procd:
+            Configuration:
+                [*] Print the shutdown to the console as well as logging it to syslog
+        procd --> procd-selinux
+        <*> zram-swap
+    Administration:
+        <*> htop
+    Kernel modules:
+        Block Devices:
+            <*> kmod-ata-ahci
+            <*> kmod-nvme
+            <*> kmod-scsi-generic
+        Filesystems:
+            <*> kmod-fs-btrfs
+            <*> kmod-fs-exfat
+            <*> kmod-fs-ext4
+            <*> kmod-fs-f2fs
+            <*> kmod-fs-ntfs3
+            <*> kmod-fs-squashfs
+        Netfilter Extensions:
+            <*> kmod-nft-tproxy
+        Network Devices:
+            <*> kmod-i40e
+            <*> kmod-vmxnet3
+    LuCI:
+        Collections:
+            <*> luci-ssl-nginx
+        Modules:
+            Translations:
+                <*> Arabic (ar)
+                <*> Bulgarian (bg)
+                <*> Bengali (bn_BD)
+                <*> Catalan (ca)
+                <*> Czech (cs)
+                <*> Danish (da)
+                <*> German (de)
+                <*> Greek (el)
+                <*> Spanish (es)
+                <*> Finnish (fi)
+                <*> French (fr)
+                <*> Hebrew (he)
+                <*> Hindi (hi)
+                <*> Hungarian (hu)
+                <*> Italian (it)
+                <*> Japanese (ja)
+                <*> Korean (ko)
+                <*> Lithuanian (lt)
+                <*> Marathi (mr)
+                <*> Malay (ms)
+                <*> Norwegian (nb_NO)
+                <*> Dutch (nl)
+                <*> Polish (pl)
+                <*> Portuguese (pt)
+                <*> Brazilian Portuguese (pt_BR)
+                <*> Romanian (ro)
+                <*> Russian (ru)
+                <*> Slovak (sk)
+                <*> Swedish (sv)
+                <*> Turkish (tr)
+                <*> Ukrainian (uk)
+                <*> Vietnamese (vi)
+                <*> Chinese Simplified (zh_Hans)
+                <*> Chinese Traditional (zh_Hant)
+            <*> luci-mod-dashboard
+        Applications:
+            <*> luci-app-nft-qos
+            <*> luci-app-sqm
+            <*> luci-app-statistics
+            <*> luci-app-wol
+        Themes:
+            <*> luci-theme-material
+            <*> luci-theme-openwrt
+            <*> luci-theme-openwrt-2020
+        Protocols:
+            <*> luci-proto-bonding
+            <*> luci-proto-vxlan
+            <*> luci-proto-wireguard
+    Network:
+        File Transfer:
+            <*> curl
+            <*> rsync
+            <*> wget-ssl
+        Firewall:
+            <*> ip6tables-extra
+            <*> ip6tables-mod-nat
+            <*> ip6tables-nft
+            <*> iptables-mod-extra
+            <*> iptables-mod-filter
+            <*> iptables-mod-nat-extra
+            <*> iptables-mod-psd
+            <*> iptables-mod-tarpit
+            <*> iptables-mod-tee
+            <*> iptables-mod-tproxy
+            <*> iptables-mod-u32
+        IP Addresses and Names:
+            <*> bind-dig
+            <*> bind-host
+            <*> bind-nslookup
+        Routing and Redirection:
+            <*> bird2c
+            <*> ip-full
+            tc-tiny --> tc-full
+        Version Control Systems:
+            <*> git-http
+        <*> iftop
+        <*> iperf3-ssl
+        <*> ipset
+        <*> mtr-json
+        <*> snmp-mibs
+        <*> snmp-utils
+        <*> socat:
+            [*] SSL support
+        <*> tcpdump
+    Utilities:
+        Compression:
+            <*> unrar
+            <*> unzip
+        Editors:
+            <*> nano-full
+            <*> vim-full
+        Terminal:
+            <*> minicom
+            <*> screen
+        collectd:
+            [*] Enable ability to use encrypted networking
+            <*> collectd-mod-conntrack
+            <*> collectd-mod-cpufreq
+            <*> collectd-mod-disk
+            <*> collectd-mod-nginx
+            <*> collectd-mod-sensors
+            <*> collectd-mod-smart
+            <*> collectd-mod-snmp
+            <*> collectd-mod-snmp6
+            <*> collectd-mod-sqm
+            <*> collectd-mod-swap
+            <*> collectd-mod-thermal
+            <*> collectd-mod-vmem
+        <*> dmesg
+        <*> dmidecode
+        <*> file
+        <*> grep
+        <*> hwclock
+        <*> hwinfo
+        <*> hwloc-utils
+        <*> jq
+        <*> less
+        <*> lscpu
+        <*> lsof
+        <*> more
+        <*> open-vm-tools-fuse
+        <*> pciutils
+        <*> powertop
+        <*> qrencode
+        <*> sed
+        <*> shadow-utils
+        <*> smartmontools
+        <*> smartmontools-drivedb
+        <*> tar
+        <*> tree
+        <*> usbids
+        <*> usbutils
+        <*> uuidgen
+        <*> whereis
+        <*> yq
